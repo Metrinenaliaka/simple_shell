@@ -99,7 +99,7 @@ void noComments(char *line)
 
 	while (*current != '\0')
 	{
-		if (*current == '#' && (prev == NULL || *prev == ' ' || 
+		if (*current == '#' && (prev == NULL || *prev == ' ' ||
 				*prev == '\t' || *prev == '\0'))
 		{
 			*current = '\0';
