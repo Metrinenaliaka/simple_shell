@@ -3,7 +3,7 @@
  * str_cmp - compares two strings
  * @s1: first string
  * @s2: second string
- * Return 0 on sucess, 1/ -1 on failure
+ * Return: 0 on sucess, 1/ -1 on failure
  */
 int str_cmp(const char *s1, const char *s2)
 {
@@ -95,15 +95,17 @@ int _atoi(char *s)
 void noComments(char *line)
 {
 	char *current = line;
-    char *prev = NULL;
+	char *prev = NULL;
 
-    while (*current != '\0') {
-        if (*current == '#' && (prev == NULL || *prev == ' ' || *prev == '\t' || *prev == '\0')) {
-            *current = '\0';
-            break;  /* Exit the loop after removing the comment*/
-        }
-
-        prev = current;
-        current++;
-    }
+	while (*current != '\0')
+	{
+		if (*current == '#' && (prev == NULL || *prev == ' ' || 
+				*prev == '\t' || *prev == '\0'))
+		{
+			*current = '\0';
+			break;  /* Exit the loop after removing the comment*/
+		}
+		prev = current;
+		current++;
+	}
 }
