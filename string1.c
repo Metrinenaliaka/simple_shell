@@ -21,7 +21,6 @@ int str_cmp(const char *s1, const char *s2)
 	}
 	if (s1[i] == '\0' && s2[i] == '\0')
 		return (0);
-
 	/*One string is shorter than the other*/
 	return ((s1[i] == '\0') ? -1 : 1);
 }
@@ -63,12 +62,10 @@ int _atoi(char *s)
 
 	while (s[length] != '\0')
 		length++;
-
 	while (i < length && f == 0)
 	{
 		if (s[i] == 45)
 			++d;
-
 		if (s[i] >= 48 && s[i] <= 57)
 		{
 			dt = s[i] - 48;
@@ -82,10 +79,8 @@ int _atoi(char *s)
 		}
 		i++;
 	}
-
 	if (f == 0)
 		return (0);
-
 	return (n);
 }
 /**
@@ -99,8 +94,8 @@ void noComments(char *line)
 
 	while (*current != '\0')
 	{
-		if (*current == '#' && (prev == NULL || *prev == ' ' ||
-				*prev == '\t' || *prev == '\0'))
+		if (*current == '#' && (prev == NULL || *prev == ' '
+					|| *prev == '\t' || *prev == '\0'))
 		{
 			*current = '\0';
 			break;  /* Exit the loop after removing the comment*/
