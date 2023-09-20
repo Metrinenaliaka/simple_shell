@@ -25,14 +25,15 @@ char *get_env(char *name)
  */
 void printEnv(void)
 {
-	char **env = environ;
+/*	char **env = environ;*/
 	long int len;
+	int i = 0;
 
-	while (*env != NULL)
+	while (environ[i])
 	{
-		len = str_len(*env);
-		write(STDOUT_FILENO, *env, len);
+		len = str_len(environ[i]);
+		write(STDOUT_FILENO, environ[i], len);
 		write(STDOUT_FILENO, "\n", 1);
-		env++;
+		i++;
 	}
 }
