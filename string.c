@@ -1,120 +1,106 @@
 #include "shell.h"
 /**
-*_strlen - print the length of str
-*@str: the string to be printed
-*
-*Return: the length of str
-*/
-int _strlen(char *str)
+ * str_len - finds the length of a string
+ * @s: string whose length is calculated
+ * Return: len;
+ */
+int str_len(char *s)
 {
 	int len = 0;
 
-	while (*str != '\0')
+	while (*s != '\0')
 	{
 		len++;
-		str++;
+		s++;
 	}
 	return (len);
 }
 /**
-*_strcpy - copies a str to another
-*@dest: the string to copy to
-*@src: the str to be copied to dest
-*
-* Return: the final string
-*/
-char *_strcpy(char *dest, char *src)
-{
-	int i = 0, j;
-
-	while (*(src + i) != '\0')
-	{
-		i++;
-	}
-	for (j = 0; j < i; j++)
-	{
-		dest[j] = src[j];
-	}
-	dest[j] = '\0';
-	return (dest);
-}
-/**
- *_strcat - concatenates two strings
- *@dest: finale string
- *@src: string to be appended
- *Return: finale string
+ * str_cpy - copies one string to another
+ * @dest: where to copy
+ * @src: where to copy from
+ * Return: dest
  */
-char *_strcat(char *dest, char *src)
+char *str_cpy(char *dest, char *src)
 {
-	int i, j;
+	int i;
 
-	for (i = 0; dest[i] != '\0'; i++)
+	for (i = 0; src[i] != '\0'; i++)
 	{
-		for (j = 0; src[j] != '\0'; j++)
-		{
-			dest[i] = dest[j];
-			i++;
-		}
+		dest[i] = src[i];
 	}
 	dest[i] = '\0';
 	return (dest);
 }
-#include "main.h"
-#include <stdio.h>
 /**
-*_strstr - locate substring
-*@haystack:  str to search in
-*@needle: sbustring
-*
-*Return: pointer to substring or NULL
-*/
-char *_strstr(char *haystack, char *needle)
+ * str_cat- concatinating two strings
+ * @dest: string that receives the other
+ * @src: string to connect to the other
+ * Return: dest
+ */
+char *str_cat(char *dest, const char *src)
 {
-	int i, j;
+	int i;
+	int j;
 
-	i = 0;
-	while (haystack[i] != '\0')
+	for (i = 0; dest[i] != '\0'; i++)
+		;
+	for (j = 0; src[j] != '\0'; j++)
 	{
-		j = 0;
-		while (needle[j] != '\0')
-		{
-			if (haystack[i + j] != needle[j])
-				j++;
-			break;
-		}
-		if (!needle[j])
-			return (&haystack[i]);
+		dest[i] = src[j];
 		i++;
 	}
-	return (NULL);
+	dest[i] = '\0';
+	return (dest);
 }
-#include "main.h"
-#include <stdlib.h>
-#include <string.h>
 /**
-*_strdup - return a pointer to  dup of a str
-*@str: the string to be dup
-*
-*Return: the dup str or NULL
-*/
-char *_strdup(char *str)
+ * str_dup - duplicates strings
+ * @str: string to be duplicated
+ * Return: new string
+ */
+char *str_dup(char *str)
 {
-	int len, i;
-	char *s;
+	int size, i = 0;
+	char *str1;
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
-	len = strlen(str) + 1;
-	s = (char *)malloc(len * sizeof(char));
-	if (s == NULL)
+	size = str_len(str) + 1;
+	str1 = (char *)malloc(size * sizeof(char));
+	if (str1 == NULL)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < len; i++)
+	while (i < size)
 	{
-		s[i] = str[i];
+		*(str1 + i) = *(str + i);
+		i++;
 	}
-	return (s);
+	return (str1);
+}
+/**
+ * _strstr - finds the first occurence of a substring
+ * @haystack: string to be checked
+ * @needle: substring to be found
+ * Return: needle or NULL
+ */
+char *_strstr(char *haystack, char *needle)
+{
+	int i = 0, j = 0;
+
+	for (; haystack[i] != '\0'; haystack++)
+	{
+		while (haystack[i] == needle[j] && needle[j] != '\0')
+		{
+			i++;
+			j++;
+		}
+		if (needle[j] == '\0')
+		{
+			return (haystack);
+		}
+	}
+	return (NULL);
 }
