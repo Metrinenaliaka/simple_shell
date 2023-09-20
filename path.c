@@ -69,7 +69,7 @@ char *searchCommand(char *command, char **argv)
 		exit(status);
 	}
 	else if (str_cmp(command, "exit") == 0 && argv[1] == NULL)
-		exit(status);
+		exit(0);
 	if (str_cmp(command, "env") == 0)
 		printEnv();
 	foundPath = findpath(command);
