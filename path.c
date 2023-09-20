@@ -56,20 +56,21 @@ char *searchCommand(char *command, char **argv)
 	char *foundPath;
 	int status = 0;
 
+	command = argv[0];
 	if (stat(command, &buf) == 0)
 		return (command);
 	if (str_cmp(command, "exit") == 0 && argv[1] != NULL)
 	{
 		status = _atoi(argv[1]);
-		if (_atoi(argv[1]) < 0)
+		if (status < 0)
 		{
-			write(STDERR_FILENO, "illegal number\n", 15);
+			perror("Illegal Number");
 			return (NULL);
 		}
 		exit(status);
 	}
 	else if (str_cmp(command, "exit") == 0 && argv[1] == NULL)
-		exit(0);
+		exit(status);
 	if (str_cmp(command, "env") == 0)
 		printEnv();
 	foundPath = findpath(command);
