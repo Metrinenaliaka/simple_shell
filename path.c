@@ -61,7 +61,7 @@ char *searchCommand(char *command, char **argv)
 	if (str_cmp(command, "exit") == 0 && argv[1] != NULL)
 	{
 		status = _atoi(argv[1]);
-		if (atoi(argv[1]) < 0)
+		if (_atoi(argv[1]) < 0)
 		{
 			write(STDERR_FILENO, "illegal number\n", 15);
 			return (NULL);
