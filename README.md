@@ -6,7 +6,7 @@ This is a project that creates a simple shell using C programming
 3. Handle the PATH `fork` must not be called if the command doesn’t exist
 4. Implement the `exit` built-in, that exits the shell
 5. Implement the env built-in, that prints the current environment
-6. Write your own getline function
+6. Write your own getline function, dont use getline
 7. You are not allowed to use strtok
 8. Implement the setenv and unsetenv builtin commands
 9. Implement the builtin command cd:
