@@ -12,6 +12,7 @@
 #include <stdbool.h>
 
 extern char **environ;
+extern int errno;
 
 /*string.h*/
 int str_len(char *s);
